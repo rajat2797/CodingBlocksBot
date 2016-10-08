@@ -15,9 +15,9 @@ PAGE_ACCESS_TOKEN = page_token
 
 def index(request):
 	# return HttpResponse(scrape_spreadsheet())
-	# return HttpResponse(gen_response_object('21',scrape_spreadsheet(),'course'))
+	return HttpResponse(gen_response_object('21',scrape_spreadsheet(),'team'))
 	# return HttpResponse(post_fb_msg('21',''))
-	return HttpResponse('HI')
+	# return HttpResponse('HI')
 
 def logg(text,symbol='*'):
 	print '%s%s%s'%(symbol*10,text,symbol*10)
@@ -89,10 +89,7 @@ def gen_response_object(fbid,spreadsheet_object,item_type = 'course'):
 
 def post_fb_msg(fbid,message):
 	post_fb_url='https://graph.facebook.com/v2.6/me/messages?access_token=%s'%PAGE_ACCESS_TOKEN
-	response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message}})
 	response_msg_object = gen_response_object(fbid,scrape_spreadsheet(),message)
-	# return response_msg_object
-	# requests.post(post_fb_url,headers={"Content-Type": "application/json"},data=response_msg)
 	requests.post(post_fb_url,headers={"Content-Type": "application/json"},data=response_msg_object)
 
 class MyChatBotView(generic.View):
