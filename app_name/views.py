@@ -4,13 +4,14 @@ from django.views import generic
 from django.utils.decorators import method_decorator
 from django.shortcuts import render, redirect
 from django.conf import settings
+from details import v_token, page_token
 import requests
 import json
 
 # Create your views here.
 
-VERIFY_TOKEN = '8thoctober2016'
-PAGE_ACCESS_TOKEN = ''
+VERIFY_TOKEN = v_token
+PAGE_ACCESS_TOKEN = page_token
 
 def index(request):
 	return HttpResponse(logg('HI','-'))
