@@ -92,7 +92,8 @@ def post_fb_msg(fbid,message):
 	response_msg = json.dumps({"recipient":{"id":fbid}, "message":{"text":message}})
 	response_msg_object = gen_response_object(fbid,scrape_spreadsheet(),message)
 	# return response_msg_object
-	requests.post(post_fb_url,headers={"Content-Type": "application/json"},data=response_msg)
+	# requests.post(post_fb_url,headers={"Content-Type": "application/json"},data=response_msg)
+	requests.post(post_fb_url,headers={"Content-Type": "application/json"},data=response_msg_object)
 
 class MyChatBotView(generic.View):
     def get (self, request, *args, **kwargs):
